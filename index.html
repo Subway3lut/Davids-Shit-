@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For David 💙</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+        .heart-envelope {
+            width: 100px;
+            height: 90px;
+            background: #1e88e5;
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+            cursor: pointer;
+            clip-path: path("M 50 15 C 65 -10, 120 10, 50 90 C -20 10, 35 -10, 50 15 Z");
+        }
+        .heart-envelope:after {
+            content: "💙";
+            position: absolute;
+            font-size: 24px;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .heart-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #1e88e5;
+            display: none;
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: explodeHearts 1.5s ease-out forwards;
+        }
+        @keyframes explodeHearts {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(1.5); opacity: 0; }
+        }
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .message {
+            display: none;
+            font-size: 20px;
+            color: #1565c0;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .video-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .video-container li {
+            margin: 10px 0;
+        }
+        .video-container a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #1e88e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .video-container a:hover {
+            background: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hey David! 💙</h1>
+    <p>I put something together for you whenever your pain gets too high!.</p>
+    <div class="heart-envelope" onclick="openLetter()"></div>
+    <div class="heart-container" id="heartContainer"></div>
+    <div class="message" id="message">I love you, David! Enjoy these videos 💙</div>
+    <div class="video-container" id="videos">
+        <h2>Here are some videos from us!</h2>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=6nCjgEGxkWA" target="_blank">From Jo</a></li>
+            <li><a href="https://www.youtube.com/watch?v=R7ghDhpCLKM" target="_blank">From Elijah</a></li>
+            <li><a href="https://youtube.com/watch?v=WXNmSruTWIA&si=VWMoe9NsoR1qmnHI" target="_blank">From Simon</a></li>
+            <li><a href="https://www.youtube.com/watch?v=oiNPgJmtzVI" target="_blank">From Sam - yo bro i mean who else would it be?</a></li>
+            <li><a href="https://www.youtube.com/watch?v=-iks8pJUv7E" target="_blank">From Arianne</a></li>
+            <li><a href="https://youtu.be/hkUYGT-S5R8?si=wVjjkRi-Qp78eXWR" target="_blank">From Steven</a></li>
+            <li><a href="https://www.youtube.com/watch?v=qYuhPeSDoqI" target="_blank">From Audrey-Anne</a></li>
+            <li><a href="https://www.youtube.com/watch?v=h-__gEJVrG4" target="_blank">Additional videos from Jo! </a></li>
+            <li><a href="https://www.youtube.com/watch?v=O0_O0EYuxeE" target="_blank"> Oopsie another one ! </a></li>
+            <li><a href="https://www.youtube.com/watch?v=9rZwyB2ak-o" target="_blank"> HERE TAKE ANOTHER! </a></li>
+            <li><a href="https://www.youtube.com/watch?v=AYXfaVD5o40" target="_blank"> Would you like some more sir? </a></li>
+            <li><a href="https://www.youtube.com/watch?v=mc1cRSpzIj0" target="_blank"> This one is pretty funny </a></li>
+            <li><a href="https://www.youtube.com/watch?v=VFm7O-c3XKY" target="_blank"> Not all of these are funny.. but they are a glimpse into what I watch </a></li>
+            <li><a href="https://www.youtube.com/watch?v=S88Me4D1LUA" target="_blank"> This guy was like super influential in my cooking passion</a></li>
+            <li><a href="https://www.youtube.com/watch?v=ozBKZFhKGc8" target="_blank"> OKIE you've made it to the END!</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function openLetter() {
+            let heartContainer = document.getElementById('heartContainer');
+            heartContainer.style.display = 'block';
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💙';
+                heart.style.setProperty('--x', `${Math.random() * 200 - 100}px`);
+                heart.style.setProperty('--y', `${Math.random() * -150}px`);
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                heartContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }
+            document.querySelector('.message').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('videos').style.display = 'block';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
